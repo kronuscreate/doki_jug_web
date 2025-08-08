@@ -1,6 +1,5 @@
-import { ReelPosition, SYMBOL_LIST, SymbolName } from "./constant";
+import { ReelPosition, SYMBOL_LIST } from "./constant";
 import Reel from "./reel";
-import Symbol from "./symbol";
 
 class Body extends Phaser.GameObjects.Container {
 
