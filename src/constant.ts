@@ -23,6 +23,7 @@ export const SYMBOL_LIST: SymbolName[][] = [
         SymbolName.REPLAY,
         SymbolName.BUDOU,
         SymbolName.CHERRY,
+        SymbolName.BELL,
         SymbolName.PIERO,
         SymbolName.REPLAY,
         SymbolName.BUDOU,

@@ -47,6 +47,8 @@ class SlotScene extends Phaser.Scene {
 
     this.load.image('back_light_off', '/assets/images/reel/back_light_off.png');
     this.load.image('back_light_on', '/assets/images/reel/back_light_on.png');
+    this.load.image('reel_reflec', '/assets/images/reel/reel_reflec.png');
+    this.load.image('reel_shadow', '/assets/images/reel/reel_shadow.png');
   }
 
   create(): void {

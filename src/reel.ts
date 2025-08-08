@@ -27,6 +27,11 @@ class Reel extends Phaser.GameObjects.Container {
             this.add(symbol);
             this.symbols.push(symbol);
         }
+
+        const reelShadow=new Phaser.GameObjects.Image(this.scene, 0, 0, "reel_shadow").setOrigin(0, 0);
+        this.add(reelShadow);
+        const reelReflec=new Phaser.GameObjects.Image(this.scene, 0, 0, "reel_reflec").setOrigin(0, 0);
+        this.add(reelReflec);
     }
 }
 export default Reel
