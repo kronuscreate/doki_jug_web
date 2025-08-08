@@ -1,4 +1,3 @@
-import { log } from "console";
 import { SYMBOL_HEIGHT, SymbolName } from "./constant";
 import Symbol from "./symbol";
 
@@ -37,11 +36,13 @@ class Reel extends Phaser.GameObjects.Container {
     }
 
     update(time:number, delta:number) {
+        time=0;
+        const A=time;
         const MAX=40;
         if(this.vRoll<MAX){
             this.vRoll+=(0.05*delta);
         }else{
-            this.vRoll=MAX;
+            this.vRoll=MAX+A-A;
         }
         // 子オブジェクトの update を呼ぶ場合
         this.symbols.forEach(child => {
