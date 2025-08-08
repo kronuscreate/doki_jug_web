@@ -1,1 +1,1 @@
-{"root":["./src/main.ts","./vite.config.ts"],"version":"5.9.2"}
+{"root":["./src/body.ts","./src/constant.ts","./src/main.ts","./src/symbol.ts","./vite.config.ts"],"version":"5.9.2"}

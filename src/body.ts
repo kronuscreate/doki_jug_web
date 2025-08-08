@@ -1,3 +1,7 @@
+import { ReelPosition, SYMBOL_LIST, SymbolName } from "./constant";
+import Reel from "./reel";
+import Symbol from "./symbol";
+
 class Body extends Phaser.GameObjects.Container {
 
     private top: Phaser.GameObjects.Image | null = null;
@@ -32,6 +36,9 @@ class Body extends Phaser.GameObjects.Container {
         this.add(this.controlPanel);
         this.add(this.bottom);
         this.add(this.bottomPanel);
+
+        const reelLeft=new Reel(this.scene,SYMBOL_LIST[ReelPosition.LEFT]);
+        this.add(reelLeft);
     }
 }
 export default Body;
