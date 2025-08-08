@@ -7,15 +7,15 @@ class SlotScene extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image('top', '/public/assets/images/top.png');
-    this.load.image('top_panel', '/public/assets/images/top_panel.png');
-    this.load.image('middle_panel', '/public/assets/images/middle_panel.png');
-    this.load.image('middle_led_off', '/public/assets/images/middle_led_off.png');
-    this.load.image('middle_led_on', '/public/assets/images/middle_led_on.png');
-    this.load.image('main_panel', '/public/assets/images/main_panel.png');
-    this.load.image('control_panel', '/public/assets/images/control_panel.png');
-    this.load.image('bottom', '/public/assets/images/bottom.png');
-    this.load.image('bottom_panel', '/public/assets/images/bottom_panel.png');
+    this.load.image('top', '/assets/images/top.png');
+    this.load.image('top_panel', '/assets/images/top_panel.png');
+    this.load.image('middle_panel', '/assets/images/middle_panel.png');
+    this.load.image('middle_led_off', '/assets/images/middle_led_off.png');
+    this.load.image('middle_led_on', '/assets/images/middle_led_on.png');
+    this.load.image('main_panel', '/assets/images/main_panel.png');
+    this.load.image('control_panel', '/assets/images/control_panel.png');
+    this.load.image('bottom', '/assets/images/bottom.png');
+    this.load.image('bottom_panel', '/assets/images/bottom_panel.png');
   }
 
   create(): void {
