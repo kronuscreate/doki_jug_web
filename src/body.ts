@@ -12,26 +12,27 @@ class Body extends Phaser.GameObjects.Container {
     private bottom: Phaser.GameObjects.Image | null = null;
     private bottomPanel: Phaser.GameObjects.Image | null = null;
 
+    private reelLeft=new Reel(this.scene,SYMBOL_LIST[ReelPosition.LEFT]);
+    private reelCenter=new Reel(this.scene,SYMBOL_LIST[ReelPosition.CENTER]);
+    private reelRight=new Reel(this.scene,SYMBOL_LIST[ReelPosition.RIGHT]);
+
     constructor(scene: Phaser.Scene) {
         super(scene);
         this.create();
     }
 
     create(): void {
-        const reelLeft=new Reel(this.scene,SYMBOL_LIST[ReelPosition.LEFT]);
-        reelLeft.x=292;
-        reelLeft.y=794;
-        this.add(reelLeft);
+        this.reelLeft.x=292;
+        this.reelLeft.y=794;
+        this.add(this.reelLeft);
 
-        const reelCenter=new Reel(this.scene,SYMBOL_LIST[ReelPosition.CENTER]);
-        reelCenter.x=645;
-        reelCenter.y=794;
-        this.add(reelCenter);
+        this.reelCenter.x=645;
+        this.reelCenter.y=794;
+        this.add(this.reelCenter);        
         
-        const reelRight=new Reel(this.scene,SYMBOL_LIST[ReelPosition.RIGHT]);
-        reelRight.x=997;
-        reelRight.y=794;
-        this.add(reelRight);
+        this.reelRight.x=997;
+        this.reelRight.y=794;
+        this.add(this.reelRight);
 
         this.top = new Phaser.GameObjects.Image(this.scene, 24, 1, 'top').setOrigin(0, 0);
         this.topPanel = new Phaser.GameObjects.Image(this.scene, 92, 271, 'top_panel').setOrigin(0, 0);
@@ -50,6 +51,12 @@ class Body extends Phaser.GameObjects.Container {
         this.add(this.controlPanel);
         this.add(this.bottom);
         this.add(this.bottomPanel);
+    }
+
+    update(time:number,delta:number):void {
+        this.reelLeft.update(time,delta);
+        this.reelCenter.update(time,delta);
+        this.reelRight.update(time,delta);
     }
 }
 export default Body;

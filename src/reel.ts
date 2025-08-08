@@ -1,9 +1,11 @@
+import { log } from "console";
 import { SYMBOL_HEIGHT, SymbolName } from "./constant";
 import Symbol from "./symbol";
 
 class Reel extends Phaser.GameObjects.Container {
     private symbols:Symbol[]=[];
     private backLights:Phaser.GameObjects.Image[]=[];
+    private vRoll:number=0;
 
     constructor(scene: Phaser.Scene,symbolNames:SymbolName[]) {
         super(scene);
@@ -32,6 +34,22 @@ class Reel extends Phaser.GameObjects.Container {
         this.add(reelShadow);
         const reelReflec=new Phaser.GameObjects.Image(this.scene, 0, 0, "reel_reflec").setOrigin(0, 0);
         this.add(reelReflec);
+    }
+
+    update(time:number, delta:number) {
+        const MAX=40;
+        if(this.vRoll<MAX){
+            this.vRoll+=(0.05*delta);
+        }else{
+            this.vRoll=MAX;
+        }
+        // 子オブジェクトの update を呼ぶ場合
+        this.symbols.forEach(child => {
+            child.y+=this.vRoll;
+            if(child.y>=SYMBOL_HEIGHT*19){
+                child.y-=SYMBOL_HEIGHT*20;
+            }
+        });
     }
 }
 export default Reel

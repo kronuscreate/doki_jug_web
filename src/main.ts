@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import Body from './body';
 
 class SlotScene extends Phaser.Scene {
+  private body:Body|null=null;
   constructor() {
     super('slot-scene');
   }
@@ -52,8 +53,14 @@ class SlotScene extends Phaser.Scene {
   }
 
   create(): void {
-    const body = new Body(this);
-    this.add.existing(body);
+    this.body=new Body(this);
+    this.add.existing(this.body);
+  }
+
+  update(time: number, delta: number): void {
+    if(this.body){
+      this.body.update(time, delta);
+    }
   }
 }
 
