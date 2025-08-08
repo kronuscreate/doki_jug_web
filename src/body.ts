@@ -19,6 +19,21 @@ class Body extends Phaser.GameObjects.Container {
     }
 
     create(): void {
+        const reelLeft=new Reel(this.scene,SYMBOL_LIST[ReelPosition.LEFT]);
+        reelLeft.x=292;
+        reelLeft.y=794;
+        this.add(reelLeft);
+
+        const reelCenter=new Reel(this.scene,SYMBOL_LIST[ReelPosition.CENTER]);
+        reelCenter.x=645;
+        reelCenter.y=794;
+        this.add(reelCenter);
+        
+        const reelRight=new Reel(this.scene,SYMBOL_LIST[ReelPosition.RIGHT]);
+        reelRight.x=997;
+        reelRight.y=794;
+        this.add(reelRight);
+
         this.top = new Phaser.GameObjects.Image(this.scene, 24, 1, 'top').setOrigin(0, 0);
         this.topPanel = new Phaser.GameObjects.Image(this.scene, 92, 271, 'top_panel').setOrigin(0, 0);
         this.middlePanel = new Phaser.GameObjects.Image(this.scene, 23, 507, 'middle_panel').setOrigin(0, 0);
@@ -36,9 +51,6 @@ class Body extends Phaser.GameObjects.Container {
         this.add(this.controlPanel);
         this.add(this.bottom);
         this.add(this.bottomPanel);
-
-        const reelLeft=new Reel(this.scene,SYMBOL_LIST[ReelPosition.LEFT]);
-        this.add(reelLeft);
     }
 }
 export default Body;
