@@ -18,7 +18,7 @@ class Symbol extends Phaser.GameObjects.Container {
 
         // ブラー画像は縦に３倍広いため微調整
         this.blurImage.y -= SYMBOL_HEIGHT;
-        this.blurImage.setVisible(false);
+        this.setBlurAlpha(0);
 
         this.backImage.setTint(0x808080)
         this.frontImage.blendMode = BlendModes.MULTIPLY;
@@ -26,6 +26,12 @@ class Symbol extends Phaser.GameObjects.Container {
         this.add(this.backImage);
         this.add(this.frontImage);
         this.add(this.blurImage);
+    }
+
+    public setBlurAlpha(alpha:number){
+        if(this.blurImage){
+            this.blurImage.alpha=alpha;
+        }
     }
 
 }

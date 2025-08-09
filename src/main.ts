@@ -50,11 +50,40 @@ class SlotScene extends Phaser.Scene {
     this.load.image('back_light_on', '/assets/images/reel/back_light_on.png');
     this.load.image('reel_reflec', '/assets/images/reel/reel_reflec.png');
     this.load.image('reel_shadow', '/assets/images/reel/reel_shadow.png');
+    
+    // sounds
+    this.load.audio('se_roll', '/assets/sounds/se_roll_01.mp3');
+    this.load.audio('se_reel_stop', '/assets/sounds/se_reel_stop_01.mp3');
   }
 
   create(): void {
     this.body=new Body(this);
     this.add.existing(this.body);
+
+    // Canvas click (pointer down) to trigger auto control
+    this.input.on('pointerdown', () => {
+      this.body?.autoControl();
+    });
+
+    // Keyboard bindings: X to spin all, arrows to stop each reel
+    const keyboard = this.input.keyboard;
+    if (keyboard) {
+      keyboard.on('keydown-X', () => {
+        this.body?.spinStartAll();
+      });
+      keyboard.on('keydown-UP', () => {
+        this.body?.spinStartAll();
+      });
+      keyboard.on('keydown-LEFT', () => {
+        this.body?.stopLeft();
+      });
+      keyboard.on('keydown-DOWN', () => {
+        this.body?.stopCenter();
+      });
+      keyboard.on('keydown-RIGHT', () => {
+        this.body?.stopRight();
+      });
+    }
   }
 
   update(time: number, delta: number): void {
