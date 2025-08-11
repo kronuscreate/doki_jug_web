@@ -1,8 +1,13 @@
 import Phaser from 'phaser';
 import Body from './body';
+import { ReelPosition } from './constant';
+import { log } from 'console';
 
 class SlotScene extends Phaser.Scene {
-  private body:Body|null=null;
+  private body: Body | null = null;
+  private selectedBodyScaleID: number = 0;
+  private scaleDats: number[] = [1,1.2, 1.5];
+
   constructor() {
     super('slot-scene');
   }
@@ -50,16 +55,17 @@ class SlotScene extends Phaser.Scene {
     this.load.image('back_light_on', '/assets/images/reel/back_light_on.png');
     this.load.image('reel_reflec', '/assets/images/reel/reel_reflec.png');
     this.load.image('reel_shadow', '/assets/images/reel/reel_shadow.png');
-    
+
     // sounds
     this.load.audio('se_roll', '/assets/sounds/se_roll_01.mp3');
     this.load.audio('se_reel_stop', '/assets/sounds/se_reel_stop_01.mp3');
   }
 
   create(): void {
-    this.body=new Body(this);
+    this.body = new Body(this);
+    this.body.scale *= this.scaleDats[this.selectedBodyScaleID];
     this.add.existing(this.body);
-
+    this.body.x = -this.body.getBounds().width / 2 + (1578 / 2)
     // Canvas click (pointer down) to trigger auto control
     this.input.on('pointerdown', () => {
       this.body?.autoControl();
@@ -83,13 +89,46 @@ class SlotScene extends Phaser.Scene {
       keyboard.on('keydown-RIGHT', () => {
         this.body?.stopRight();
       });
+
+      keyboard.on('keydown-W', () => {
+        this.body?.debugMove(-1, ReelPosition.LEFT);
+      });
+      keyboard.on('keydown-E', () => {
+        this.body?.debugMove(-111 / 2, ReelPosition.LEFT);
+      });
+      keyboard.on('keydown-R', () => {
+        this.body?.debugMove(-111, ReelPosition.LEFT);
+      });
+      keyboard.on('keydown-S', () => {
+        this.body?.debugMove(1, ReelPosition.LEFT);
+      });
+      keyboard.on('keydown-D', () => {
+        this.body?.debugMove(111 / 2, ReelPosition.LEFT);
+      });
+      keyboard.on('keydown-F', () => {
+        this.body?.debugMove(111, ReelPosition.LEFT);
+      });
+
+      keyboard.on('keydown-SPACE', () => {
+        this.scaleChange();
+      });
     }
   }
 
   update(time: number, delta: number): void {
-    if(this.body){
+    if (this.body) {
       this.body.update(time, delta);
     }
+  }
+
+  scaleChange() {
+    if (this.body) {
+      this.selectedBodyScaleID++;
+      this.selectedBodyScaleID %= this.scaleDats.length;
+      this.body.scale = this.scaleDats[this.selectedBodyScaleID];
+      this.body.x = -this.body.getBounds().width / 2 + (1578 / 2)
+    }
+
   }
 }
 
