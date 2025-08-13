@@ -90,25 +90,6 @@ class SlotScene extends Phaser.Scene {
         this.body?.stopRight();
       });
 
-      keyboard.on('keydown-W', () => {
-        this.body?.debugMove(-1, ReelPosition.LEFT);
-      });
-      keyboard.on('keydown-E', () => {
-        this.body?.debugMove(-111 / 2, ReelPosition.LEFT);
-      });
-      keyboard.on('keydown-R', () => {
-        this.body?.debugMove(-111, ReelPosition.LEFT);
-      });
-      keyboard.on('keydown-S', () => {
-        this.body?.debugMove(1, ReelPosition.LEFT);
-      });
-      keyboard.on('keydown-D', () => {
-        this.body?.debugMove(111 / 2, ReelPosition.LEFT);
-      });
-      keyboard.on('keydown-F', () => {
-        this.body?.debugMove(111, ReelPosition.LEFT);
-      });
-
       keyboard.on('keydown-SPACE', () => {
         this.scaleChange();
       });

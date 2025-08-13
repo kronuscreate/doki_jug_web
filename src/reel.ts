@@ -1,5 +1,5 @@
 import { log } from "console";
-import { SYMBOL_HEIGHT, SymbolName } from "./constant";
+import { RollData, RollName, RollSymbolData, SYMBOL_HEIGHT, SYMBOL_LIST, SymbolName } from "./constant";
 import Symbol from "./symbol";
 import { BlendModes } from "phaser";
 
@@ -9,11 +9,15 @@ class Reel extends Phaser.GameObjects.Container {
     private vRoll: number = 0;
     private vRollMax: number = 49.3;
     private isSpin: boolean = false;
-    private reelY: number = 0;
-    private stopY: number = 0;
+    public reelY: number = 0;
     private stopToY: number = 0;
     private isSlip: boolean = false;
     private debugText: Phaser.GameObjects.Text | null = null;
+    private symbolNames:SymbolName[]=[];
+
+    private stopIndex:number=0;
+
+    private stopSymbolDats:RollSymbolData[]=[];
 
     public getIsSpin() {
         return this.isSpin;
@@ -25,10 +29,11 @@ class Reel extends Phaser.GameObjects.Container {
 
     constructor(scene: Phaser.Scene, symbolNames: SymbolName[]) {
         super(scene);
-        this.create(symbolNames);
+        this.symbolNames=symbolNames;
+        this.create();
     }
 
-    private create(symbolNames: SymbolName[]) {
+    private create() {
         for (let i = 0; i < 3; i++) {
             const back_light_off = new Phaser.GameObjects.Image(this.scene, 0, 0, "back_light_off").setOrigin(0, 0);
             back_light_off.y = SYMBOL_HEIGHT * i;
@@ -39,8 +44,8 @@ class Reel extends Phaser.GameObjects.Container {
             this.backLights.push(back_light_on);
         }
 
-        for (let i = 0; i < symbolNames.length; i++) {
-            const symbol = new Symbol(this.scene, symbolNames[i]);
+        for (let i = 0; i < this.symbolNames.length; i++) {
+            const symbol = new Symbol(this.scene, this.symbolNames[i]);
             symbol.y = SYMBOL_HEIGHT * i;
             this.add(symbol);
             this.symbols.push(symbol);
@@ -84,13 +89,13 @@ class Reel extends Phaser.GameObjects.Container {
     public spinStart() {
         this.isSpin = true;
     }
+
     public spinStop() {
         this.isSlip = true;
-        this.stopY = this.reelY;
-        this.stopToY = Math.floor((this.reelY + SYMBOL_HEIGHT) / (SYMBOL_HEIGHT)) * SYMBOL_HEIGHT;
-        if (this.stopToY >= SYMBOL_HEIGHT * 20) {
-            this.stopToY -= SYMBOL_HEIGHT * 20;
-        }
+    }
+
+    public setStopToY(stopToY:number){
+        this.stopToY=stopToY;
     }
 
     public debugMove(amount: number) {
@@ -104,7 +109,9 @@ class Reel extends Phaser.GameObjects.Container {
         }
         this.reelY = Math.floor(this.reelY % (SYMBOL_HEIGHT * 20));
         if (this.debugText) {
-            this.debugText.text = this.stopY + ":" + this.stopToY + ":" + this.reelY;
+            const symbolName=this.symbolNames[((this.symbolNames.length*2)-this.stopIndex+1)%this.symbolNames.length];
+
+            this.debugText.text = this.stopToY + ":" + this.stopIndex+" "+symbolName;
         }
 
         // 子オブジェクトの update を呼ぶ場合

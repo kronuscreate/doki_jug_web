@@ -1,6 +1,7 @@
 import { log } from "console";
 import { ReelPosition, SYMBOL_LIST } from "./constant";
 import Reel from "./reel";
+import { ReelController } from "./reelController";
 
 class Body extends Phaser.GameObjects.Container {
 
@@ -17,11 +18,7 @@ class Body extends Phaser.GameObjects.Container {
     private reelCenter = new Reel(this.scene, SYMBOL_LIST[ReelPosition.CENTER]);
     private reelRight = new Reel(this.scene, SYMBOL_LIST[ReelPosition.RIGHT]);
 
-    private reels:Reel[]=[
-        this.reelLeft,
-        this.reelCenter,
-        this.reelRight,
-    ]
+    private reelController: ReelController = new ReelController(this.reelLeft, this.reelCenter, this.reelRight);
 
     constructor(scene: Phaser.Scene) {
         super(scene);
@@ -58,51 +55,39 @@ class Body extends Phaser.GameObjects.Container {
         this.add(this.controlPanel);
         this.add(this.bottom);
         this.add(this.bottomPanel);
+        this.mainPanel.alpha = 0;
     }
 
     update(time: number, delta: number): void {
-        this.reelLeft.update(time, delta);
-        this.reelCenter.update(time, delta);
-        this.reelRight.update(time, delta);
+        this.reelController.update(time, delta);
     }
 
     public spinStartAll(): void {
-        if (this.reelLeft.getIsSpin() ||
-            this.reelCenter.getIsSpin() ||
-            this.reelRight.getIsSpin() ||
-            this.reelLeft.getIsSlip() ||
-            this.reelCenter.getIsSlip() ||
-            this.reelRight.getIsSlip()) {
-                return;
-            }
-            this.reelLeft.spinStart();
-            this.reelCenter.spinStart();
-            this.reelRight.spinStart();
+        const result = this.reelController.spin();
+        if (result) {
             this.scene.sound.play('se_roll');
         }
+    }
 
     public stopLeft(): void {
-        if (!this.reelLeft.getIsSpin() || this.reelLeft.getIsSlip()) {
-            return;
+        const result = this.reelController.stop(ReelPosition.LEFT);
+        if (result) {
+            this.scene.sound.play('se_reel_stop');
         }
-        this.reelLeft.spinStop();
-        this.scene.sound.play('se_reel_stop');
     }
 
     public stopCenter(): void {
-        if (!this.reelCenter.getIsSpin() || this.reelCenter.getIsSlip()) {
-            return;
+        const result = this.reelController.stop(ReelPosition.CENTER);
+        if (result) {
+            this.scene.sound.play('se_reel_stop');
         }
-        this.reelCenter.spinStop();
-        this.scene.sound.play('se_reel_stop');
     }
 
     public stopRight(): void {
-        if (!this.reelRight.getIsSpin() || this.reelRight.getIsSlip()) {
-            return;
+        const result = this.reelController.stop(ReelPosition.RIGHT);
+        if (result) {
+            this.scene.sound.play('se_reel_stop');
         }
-        this.reelRight.spinStop();
-        this.scene.sound.play('se_reel_stop');
     }
 
     public autoControl() {
@@ -130,10 +115,6 @@ class Body extends Phaser.GameObjects.Container {
             this.stopRight();
             return;
         }
-    }
-
-    public debugMove(amount:number,position:ReelPosition){
-        this.reels[position].debugMove(amount);
     }
 }
 export default Body;
