@@ -30,6 +30,10 @@ class SlotScene extends Phaser.Scene {
     this.load.image('bell_front', '/assets/images/symbol/bell.png');
     this.load.image('bell_back', '/assets/images/symbol/bell_back.png');
     this.load.image('bell_blur', '/assets/images/symbol/bell_blur.png');
+    
+    this.load.image('bell2_front', '/assets/images/symbol/bell2.png');
+    this.load.image('bell2_back', '/assets/images/symbol/bell2_back.png');
+    this.load.image('bell2_blur', '/assets/images/symbol/bell2_blur.png');
 
     this.load.image('budou_front', '/assets/images/symbol/budou.png');
     this.load.image('budou_back', '/assets/images/symbol/budou_back.png');
@@ -42,6 +46,10 @@ class SlotScene extends Phaser.Scene {
     this.load.image('piero_front', '/assets/images/symbol/piero.png');
     this.load.image('piero_back', '/assets/images/symbol/piero_back.png');
     this.load.image('piero_blur', '/assets/images/symbol/piero_blur.png');
+
+    this.load.image('piero2_front', '/assets/images/symbol/piero2.png');
+    this.load.image('piero2_back', '/assets/images/symbol/piero2_back.png');
+    this.load.image('piero2_blur', '/assets/images/symbol/piero2_blur.png');
 
     this.load.image('red_7_front', '/assets/images/symbol/red_7.png');
     this.load.image('red_7_back', '/assets/images/symbol/red_7_back.png');

@@ -1,5 +1,5 @@
 import { log } from "console";
-import { ReelPosition, SYMBOL_LIST } from "./constant";
+import { ReelPosition, RollName, SYMBOL_LIST } from "./constant";
 import Reel from "./reel";
 import { ReelController } from "./reelController";
 
@@ -13,6 +13,9 @@ class Body extends Phaser.GameObjects.Container {
     private controlPanel: Phaser.GameObjects.Image | null = null;
     private bottom: Phaser.GameObjects.Image | null = null;
     private bottomPanel: Phaser.GameObjects.Image | null = null;
+    private rollName: RollName = RollName.REACH_BONUS_SYMBOL_CENTER;
+
+    private debugText: Phaser.GameObjects.Text | null = null;
 
     private reelLeft = new Reel(this.scene, SYMBOL_LIST[ReelPosition.LEFT]);
     private reelCenter = new Reel(this.scene, SYMBOL_LIST[ReelPosition.CENTER]);
@@ -55,7 +58,14 @@ class Body extends Phaser.GameObjects.Container {
         this.add(this.controlPanel);
         this.add(this.bottom);
         this.add(this.bottomPanel);
-        this.mainPanel.alpha = 0;
+        // this.mainPanel.alpha = 0;
+
+        this.debugText = new Phaser.GameObjects.Text(this.scene, 0, 0, "debug text", {
+            fontSize: '32px',
+            color: '#ffffff',
+            fontFamily: 'Arial'
+        })
+        this.add(this.debugText);
     }
 
     update(time: number, delta: number): void {
@@ -65,6 +75,11 @@ class Body extends Phaser.GameObjects.Container {
     public spinStartAll(): void {
         const result = this.reelController.spin();
         if (result) {
+            this.rollName = Math.floor(Math.random() * 100) % 6 as RollName;
+            this.reelController.setRollName(this.rollName);
+            if(this.debugText){
+                this.debugText.text=this.rollName.toString();
+            }
             this.scene.sound.play('se_roll');
         }
     }

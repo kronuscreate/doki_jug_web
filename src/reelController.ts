@@ -6,14 +6,14 @@ export class ReelController {
     private reels: Reel[] = [];
     private bitaStopY: number[] = [];
     private bitaStopIndex: number[] = [];
-    private flag: RollName = RollName.REACH_BONUS_SYMBOL_CENTER;
+    private rolName: RollName = RollName.REACH_BONUS_SYMBOL_CENTER;
     private stoppableSymbolsData: RollData;
 
     constructor(left: Reel, center: Reel, right: Reel) {
         this.reels.push(left);
         this.reels.push(center);
         this.reels.push(right);
-        this.stoppableSymbolsData = this.cloneRollData(RollData[this.flag]);
+        this.stoppableSymbolsData = this.cloneRollData(RollData[this.rolName]);
     }
 
     private cloneRollData(src: RollData): RollData {
@@ -39,11 +39,12 @@ export class ReelController {
         this.reels[ReelPosition.LEFT].spinStart();
         this.reels[ReelPosition.CENTER].spinStart();
         this.reels[ReelPosition.RIGHT].spinStart();
-
-        this.flag = RollName.SINGLE_CHERRY_OR_BONUS_CHERRY;
-        this.stoppableSymbolsData = this.cloneRollData(RollData[this.flag]);
-        console.log("start", this.stoppableSymbolsData);
         return true;
+    }
+    public setRollName(flagName:RollName){
+        this.rolName = flagName;
+        this.stoppableSymbolsData = this.cloneRollData(RollData[this.rolName]);
+        console.log("start", this.stoppableSymbolsData);
     }
 
     public stop(position: ReelPosition): boolean {
@@ -120,7 +121,7 @@ export class ReelController {
         this.bitaStopY[position] += (111 * resultSuberikoma);
         this.bitaStopY[position] %= (SYMBOL_HEIGHT * 20);
         console.log("after", this.bitaStopY[position]);
-        console.log("diff",this.bitaStopY[position]-prev)
+        console.log("diff", this.bitaStopY[position] - prev)
 
 
         //stoppableSymbolsData.symbolData
