@@ -54,15 +54,16 @@ export const RollData: RollData[] = [
         name:RollName.SINGLE_CHERRY_OR_BONUS_CHERRY,
         symbolData:[
             {
-                lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.BUDOU,
+                lSymbol:SymbolName.REPLAY, 
+                cSymbol:SymbolName.PIERO,
                 rSymbol:SymbolName.RED_7
             },
             {
-                lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.BUDOU,
+                lSymbol:SymbolName.REPLAY, 
+                cSymbol:SymbolName.PIERO,
                 rSymbol:SymbolName.PIERO
             },
+
             {
                 lSymbol:SymbolName.BAR, 
                 cSymbol:SymbolName.RED_7,
@@ -70,9 +71,10 @@ export const RollData: RollData[] = [
             },
             {
                 lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.BAR,
+                cSymbol:SymbolName.RED_7,
                 rSymbol:SymbolName.PIERO
             },
+
             {
                 lSymbol:SymbolName.BAR, 
                 cSymbol:SymbolName.BAR,
@@ -80,9 +82,43 @@ export const RollData: RollData[] = [
             },
             {
                 lSymbol:SymbolName.BAR, 
+                cSymbol:SymbolName.BAR,
+                rSymbol:SymbolName.PIERO
+            },
+
+            {
+                lSymbol:SymbolName.BAR, 
+                cSymbol:SymbolName.BELL,
+                rSymbol:SymbolName.RED_7
+            },
+            {
+                lSymbol:SymbolName.BAR, 
+                cSymbol:SymbolName.BELL,
+                rSymbol:SymbolName.PIERO
+            },
+
+            {
+                lSymbol:SymbolName.REPLAY, 
+                cSymbol:SymbolName.RED_7,
+                rSymbol:SymbolName.RED_7
+            },
+            {
+                lSymbol:SymbolName.REPLAY, 
                 cSymbol:SymbolName.RED_7,
                 rSymbol:SymbolName.PIERO
             },
+
+            {
+                lSymbol:SymbolName.REPLAY, 
+                cSymbol:SymbolName.BAR,
+                rSymbol:SymbolName.RED_7
+            },
+            {
+                lSymbol:SymbolName.REPLAY, 
+                cSymbol:SymbolName.BAR,
+                rSymbol:SymbolName.PIERO
+            },
+
             {
                 lSymbol:SymbolName.REPLAY, 
                 cSymbol:SymbolName.BELL,
@@ -90,37 +126,7 @@ export const RollData: RollData[] = [
             },
             {
                 lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.RED_7
-            },
-            {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.RED_7,
-                rSymbol:SymbolName.RED_7
-            },
-            {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.PIERO,
-                rSymbol:SymbolName.RED_7
-            },
-            {
-                lSymbol:SymbolName.REPLAY, 
                 cSymbol:SymbolName.BELL,
-                rSymbol:SymbolName.PIERO
-            },
-            {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.PIERO
-            },
-            {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.RED_7,
-                rSymbol:SymbolName.PIERO
-            },
-            {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.PIERO,
                 rSymbol:SymbolName.PIERO
             },
         ]
