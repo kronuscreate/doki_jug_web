@@ -41,7 +41,7 @@ export class ReelController {
         this.reels[ReelPosition.RIGHT].spinStart();
         return true;
     }
-    public setRollName(flagName:RollName){
+    public setRollName(flagName: RollName) {
         this.rolName = flagName;
         this.stoppableSymbolsData = this.cloneRollData(RollData[this.rolName]);
         console.log("start", this.stoppableSymbolsData);
@@ -118,16 +118,13 @@ export class ReelController {
 
         const prev = this.bitaStopY[position];
         console.log("prev", prev);
-        this.bitaStopY[position] += (111 * resultSuberikoma);
+        const suberi = (SYMBOL_HEIGHT * resultSuberikoma);
+        this.bitaStopY[position] += suberi;
         this.bitaStopY[position] %= (SYMBOL_HEIGHT * 20);
+        const diff = this.bitaStopY[position] - prev;
         console.log("after", this.bitaStopY[position]);
-        console.log("diff", this.bitaStopY[position] - prev)
-
-
-        //stoppableSymbolsData.symbolData
-
-
-
+        console.log("diff", diff)
+        //console.log((prev + suberi));
 
         this.reels[position].setStopToY(this.bitaStopY[position])
         return true;

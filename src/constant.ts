@@ -17,6 +17,8 @@ export enum RollName {
     CENTER_CHERRY = 3,
     COMMON_BUDOU = 4,
     REPLAY = 5,
+    PIERO = 6,
+    BELL = 7,
 }
 
 export interface RollData {
@@ -295,6 +297,36 @@ export const RollData: RollData[] = [
                 lSymbol:SymbolName.BUDOU, 
                 cSymbol:SymbolName.PIERO,
                 rSymbol:SymbolName.BELL
+            },
+        ]
+    },
+    {
+        name:RollName.PIERO,
+        symbolData:[
+            {
+                lSymbol:SymbolName.BUDOU, 
+                cSymbol:SymbolName.REPLAY,
+                rSymbol:SymbolName.CHERRY
+            },
+            {
+                lSymbol:SymbolName.BUDOU, 
+                cSymbol:SymbolName.REPLAY,
+                rSymbol:SymbolName.BAR
+            },
+        ]
+    },
+    {
+        name:RollName.BELL,
+        symbolData:[
+            {
+                lSymbol:SymbolName.RED_7, 
+                cSymbol:SymbolName.BUDOU,
+                rSymbol:SymbolName.REPLAY
+            },
+            {
+                lSymbol:SymbolName.BUDOU, 
+                cSymbol:SymbolName.BUDOU,
+                rSymbol:SymbolName.REPLAY
             },
         ]
     }

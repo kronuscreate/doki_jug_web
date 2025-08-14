@@ -13,11 +13,11 @@ class Reel extends Phaser.GameObjects.Container {
     private stopToY: number = 0;
     private isSlip: boolean = false;
     private debugText: Phaser.GameObjects.Text | null = null;
-    private symbolNames:SymbolName[]=[];
+    private symbolNames: SymbolName[] = [];
 
-    private stopIndex:number=0;
+    private stopIndex: number = 0;
 
-    private stopSymbolDats:RollSymbolData[]=[];
+    private stopSymbolDats: RollSymbolData[] = [];
 
     public getIsSpin() {
         return this.isSpin;
@@ -29,7 +29,7 @@ class Reel extends Phaser.GameObjects.Container {
 
     constructor(scene: Phaser.Scene, symbolNames: SymbolName[]) {
         super(scene);
-        this.symbolNames=symbolNames;
+        this.symbolNames = symbolNames;
         this.create();
     }
 
@@ -55,7 +55,7 @@ class Reel extends Phaser.GameObjects.Container {
         this.add(reelShadow);
         const reelReflec = new Phaser.GameObjects.Image(this.scene, 0, 0, "reel_reflec").setOrigin(0, 0);
         this.add(reelReflec);
-        reelReflec.alpha=0.9;
+        reelReflec.alpha = 0.9;
 
         this.debugText = new Phaser.GameObjects.Text(this.scene, 0, -32, "", {
             fontSize: '32px',
@@ -76,8 +76,12 @@ class Reel extends Phaser.GameObjects.Container {
         this.reelY += this.vRoll;
 
         if (this.isSlip) {
+            if (this.reelY -this.stopToY >= SYMBOL_HEIGHT * 4) {
+                this.reelY -= SYMBOL_HEIGHT * 20;
+            }
+
             if (this.reelY > this.stopToY) {
-                this.reelY=this.stopToY;
+                this.reelY = this.stopToY;
                 this.isSpin = false;
                 this.isSlip = false;
                 this.vRoll = 0;
@@ -94,8 +98,8 @@ class Reel extends Phaser.GameObjects.Container {
         this.isSlip = true;
     }
 
-    public setStopToY(stopToY:number){
-        this.stopToY=stopToY;
+    public setStopToY(stopToY: number) {
+        this.stopToY = stopToY;
     }
 
     public debugMove(amount: number) {
@@ -104,14 +108,10 @@ class Reel extends Phaser.GameObjects.Container {
     }
 
     private loopPositionCheck(vRoll: number) {
-        if (this.reelY < 0) {
-            this.reelY += SYMBOL_HEIGHT * 20;
-        }
-        this.reelY = Math.floor(this.reelY % (SYMBOL_HEIGHT * 20));
+        this.reelSeikika();
         if (this.debugText) {
-            const symbolName=this.symbolNames[((this.symbolNames.length*2)-this.stopIndex+1)%this.symbolNames.length];
-
-            this.debugText.text = this.stopToY + ":" + this.stopIndex+" "+symbolName;
+            const symbolName = this.symbolNames[((this.symbolNames.length * 2) - this.stopIndex + 1) % this.symbolNames.length];
+            this.debugText.text = this.stopToY + ":" + this.stopIndex + " " + symbolName;
         }
 
         // 子オブジェクトの update を呼ぶ場合
@@ -129,6 +129,13 @@ class Reel extends Phaser.GameObjects.Container {
             // リールブラー
             child.setBlurAlpha(vRoll / this.vRollMax);
         });
+    }
+
+    private reelSeikika() {
+        if (this.reelY < 0) {
+            this.reelY += SYMBOL_HEIGHT * 20;
+        }
+        this.reelY = Math.floor(this.reelY % (SYMBOL_HEIGHT * 20));
     }
 }
 export default Reel

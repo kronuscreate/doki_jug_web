@@ -75,7 +75,7 @@ class Body extends Phaser.GameObjects.Container {
     public spinStartAll(): void {
         const result = this.reelController.spin();
         if (result) {
-            this.rollName = Math.floor(Math.random() * 100) % 6 as RollName;
+            this.rollName = Math.floor(Math.random() * 100) % 8 as RollName;
             this.reelController.setRollName(this.rollName);
             if(this.debugText){
                 this.debugText.text=this.rollName.toString();
