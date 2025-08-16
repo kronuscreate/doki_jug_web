@@ -19,6 +19,8 @@ export enum RollName {
     REPLAY = 5,
     PIERO = 6,
     BELL = 7,
+    RED_SEVEN=8,
+    RED_SEVEN_FAKE=9
 }
 
 export interface RollData {
@@ -37,299 +39,443 @@ export const RollData: RollData[] = [
         name: RollName.REACH_BONUS_SYMBOL_CENTER,
         symbolData: [
             {
-                lSymbol:SymbolName.RED_7, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.RED_7
+                lSymbol: SymbolName.RED_7,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.RED_7
             },
             {
-                lSymbol:SymbolName.RED_7, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.BAR
-            },
-            {
-                lSymbol:SymbolName.RED_7, 
-                cSymbol:SymbolName.REPLAY,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.RED_7,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.BAR
             },
 
             {
-                lSymbol:SymbolName.PIERO, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.RED_7
+                lSymbol: SymbolName.PIERO,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.RED_7
             },
             {
-                lSymbol:SymbolName.PIERO, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.REPLAY
-            },
-            {
-                lSymbol:SymbolName.PIERO, 
-                cSymbol:SymbolName.REPLAY,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.PIERO,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.REPLAY
             },
 
             {
-                lSymbol:SymbolName.BELL, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.REPLAY
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.REPLAY
             },
             {
-                lSymbol:SymbolName.BELL, 
-                cSymbol:SymbolName.RED_7,
-                rSymbol:SymbolName.REPLAY
-            },
-            {
-                lSymbol:SymbolName.BELL, 
-                cSymbol:SymbolName.RED_7,
-                rSymbol:SymbolName.RED_7
-            },
-            {
-                lSymbol:SymbolName.BELL, 
-                cSymbol:SymbolName.REPLAY,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.REPLAY
             },
 
             {
-                lSymbol:SymbolName.PIERO2, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.REPLAY
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.REPLAY
             },
             {
-                lSymbol:SymbolName.PIERO2, 
-                cSymbol:SymbolName.RED_7,
-                rSymbol:SymbolName.REPLAY
-            },
-            {
-                lSymbol:SymbolName.PIERO2, 
-                cSymbol:SymbolName.RED_7,
-                rSymbol:SymbolName.RED_7
-            },
-            {
-                lSymbol:SymbolName.PIERO2, 
-                cSymbol:SymbolName.REPLAY,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.RED_7
             },
 
             {
-                lSymbol:SymbolName.BELL2, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.BAR
+                lSymbol: SymbolName.PIERO2,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.REPLAY
             },
             {
-                lSymbol:SymbolName.BELL2, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.PIERO2,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.REPLAY
             },
             {
-                lSymbol:SymbolName.BELL2, 
-                cSymbol:SymbolName.PIERO,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.PIERO2,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.RED_7
+            },
+
+            {
+                lSymbol: SymbolName.BELL2,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.BAR
+            },
+            {
+                lSymbol: SymbolName.BELL2,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.BUDOU
             },
         ]
     },
     {
-        name:RollName.SINGLE_CHERRY_OR_BONUS_CHERRY,
-        symbolData:[
+        name: RollName.SINGLE_CHERRY_OR_BONUS_CHERRY,
+        symbolData: [
             {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.PIERO,
-                rSymbol:SymbolName.RED_7
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.PIERO,
+                rSymbol: SymbolName.RED_7
             },
             {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.PIERO,
-                rSymbol:SymbolName.PIERO
-            },
-
-            {
-                lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.RED_7,
-                rSymbol:SymbolName.RED_7
-            },
-            {
-                lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.RED_7,
-                rSymbol:SymbolName.PIERO
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.PIERO,
+                rSymbol: SymbolName.PIERO
             },
 
             {
-                lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.RED_7
+                lSymbol: SymbolName.BAR,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.RED_7
             },
             {
-                lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.PIERO
-            },
-
-            {
-                lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.BELL,
-                rSymbol:SymbolName.RED_7
-            },
-            {
-                lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.BELL,
-                rSymbol:SymbolName.PIERO
+                lSymbol: SymbolName.BAR,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.PIERO
             },
 
             {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.RED_7,
-                rSymbol:SymbolName.RED_7
+                lSymbol: SymbolName.BAR,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.RED_7
             },
             {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.RED_7,
-                rSymbol:SymbolName.PIERO
-            },
-
-            {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.RED_7
-            },
-            {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.PIERO
+                lSymbol: SymbolName.BAR,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.PIERO
             },
 
             {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.BELL,
-                rSymbol:SymbolName.RED_7
+                lSymbol: SymbolName.BAR,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.RED_7
             },
             {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.BELL,
-                rSymbol:SymbolName.PIERO
+                lSymbol: SymbolName.BAR,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.PIERO
+            },
+
+            {
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.RED_7
+            },
+            {
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.PIERO
+            },
+
+            {
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.RED_7
+            },
+            {
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.PIERO
+            },
+
+            {
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.RED_7
+            },
+            {
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.PIERO
             },
         ]
     },
     {
-        name:RollName.CHERRYS,
-        symbolData:[
+        name: RollName.CHERRYS,
+        symbolData: [
             {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.CHERRY,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.CHERRY,
+                rSymbol: SymbolName.BUDOU
             },
             {
-                lSymbol:SymbolName.REPLAY, 
-                cSymbol:SymbolName.BELL,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.BUDOU
             },
             {
-                lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.CHERRY,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.BAR,
+                cSymbol: SymbolName.CHERRY,
+                rSymbol: SymbolName.BUDOU
             },
             {
-                lSymbol:SymbolName.BAR, 
-                cSymbol:SymbolName.BELL,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.BAR,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.BUDOU
             },
         ]
     },
     {
-        name:RollName.CENTER_CHERRY,
-        symbolData:[
+        name: RollName.CENTER_CHERRY,
+        symbolData: [
             {
-                lSymbol:SymbolName.CHERRY, 
-                cSymbol:SymbolName.CHERRY,
-                rSymbol:SymbolName.CHERRY
+                lSymbol: SymbolName.CHERRY,
+                cSymbol: SymbolName.CHERRY,
+                rSymbol: SymbolName.CHERRY
             },
             {
-                lSymbol:SymbolName.CHERRY, 
-                cSymbol:SymbolName.CHERRY,
-                rSymbol:SymbolName.BAR
+                lSymbol: SymbolName.CHERRY,
+                cSymbol: SymbolName.CHERRY,
+                rSymbol: SymbolName.RED_7
             },
             {
-                lSymbol:SymbolName.CHERRY, 
-                cSymbol:SymbolName.BELL,
-                rSymbol:SymbolName.BELL
+                lSymbol: SymbolName.CHERRY,
+                cSymbol: SymbolName.REPLAY,
+                rSymbol: SymbolName.RED_7
             },
             {
-                lSymbol:SymbolName.CHERRY, 
-                cSymbol:SymbolName.BAR,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.CHERRY,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.BUDOU
             },
 
             {
-                lSymbol:SymbolName.BELL, 
-                cSymbol:SymbolName.BELL,
-                rSymbol:SymbolName.BELL
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.BELL
             },
             {
-                lSymbol:SymbolName.BELL2, 
-                cSymbol:SymbolName.BELL,
-                rSymbol:SymbolName.BELL
+                lSymbol: SymbolName.BELL2,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.BELL
             },
 
             {
-                lSymbol:SymbolName.BELL, 
-                cSymbol:SymbolName.CHERRY,
-                rSymbol:SymbolName.BELL
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.BUDOU,
+                rSymbol: SymbolName.BUDOU
             },
             {
-                lSymbol:SymbolName.BELL2, 
-                cSymbol:SymbolName.CHERRY,
-                rSymbol:SymbolName.BELL
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.RED_7
+            },
+            {
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.RED_7
+            },
+            {
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.REPLAY
+            },
+
+            {
+                lSymbol: SymbolName.BELL2,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.BAR
+            },
+            {
+                lSymbol: SymbolName.BELL2,
+                cSymbol: SymbolName.BAR,
+                rSymbol: SymbolName.BUDOU
             },
         ]
     },
     {
-        name:RollName.COMMON_BUDOU,
-        symbolData:[
+        name: RollName.COMMON_BUDOU,
+        symbolData: [
             {
-                lSymbol:SymbolName.BUDOU, 
-                cSymbol:SymbolName.BUDOU,
-                rSymbol:SymbolName.BUDOU
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.BUDOU,
+                rSymbol: SymbolName.BELL
+            },
+            {
+                lSymbol: SymbolName.PIERO,
+                cSymbol: SymbolName.BUDOU,
+                rSymbol: SymbolName.BELL
+            },
+            {
+                lSymbol: SymbolName.PIERO2,
+                cSymbol: SymbolName.BUDOU,
+                rSymbol: SymbolName.BELL
             },
         ]
     },
     {
-        name:RollName.REPLAY,
-        symbolData:[
+        name: RollName.REPLAY,
+        symbolData: [
             {
-                lSymbol:SymbolName.BUDOU, 
-                cSymbol:SymbolName.PIERO,
-                rSymbol:SymbolName.BELL
+                lSymbol: SymbolName.BUDOU,
+                cSymbol: SymbolName.REPLAY,
+                rSymbol: SymbolName.RED_7
+            },
+            {
+                lSymbol: SymbolName.BUDOU,
+                cSymbol: SymbolName.REPLAY,
+                rSymbol: SymbolName.PIERO
             },
         ]
     },
     {
-        name:RollName.PIERO,
-        symbolData:[
+        name: RollName.PIERO,
+        symbolData: [
             {
-                lSymbol:SymbolName.BUDOU, 
-                cSymbol:SymbolName.REPLAY,
-                rSymbol:SymbolName.CHERRY
+                lSymbol: SymbolName.BUDOU,
+                cSymbol: SymbolName.REPLAY,
+                rSymbol: SymbolName.CHERRY
+            },
+
+            {
+                lSymbol: SymbolName.RED_7,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.REPLAY
+            },
+
+            {
+                lSymbol: SymbolName.RED_7,
+                cSymbol: SymbolName.CHERRY,
+                rSymbol: SymbolName.REPLAY
+            },
+
+            {
+                lSymbol: SymbolName.PIERO,
+                cSymbol: SymbolName.PIERO,
+                rSymbol: SymbolName.PIERO
             },
             {
-                lSymbol:SymbolName.BUDOU, 
-                cSymbol:SymbolName.REPLAY,
-                rSymbol:SymbolName.BAR
+                lSymbol: SymbolName.PIERO2,
+                cSymbol: SymbolName.PIERO,
+                rSymbol: SymbolName.PIERO
+            },
+
+            {
+                lSymbol: SymbolName.BUDOU,
+                cSymbol: SymbolName.PIERO,
+                rSymbol: SymbolName.REPLAY
+            },
+            {
+                lSymbol: SymbolName.RED_7,
+                cSymbol: SymbolName.PIERO,
+                rSymbol: SymbolName.CHERRY
             },
         ]
     },
     {
-        name:RollName.BELL,
-        symbolData:[
+        name: RollName.BELL,
+        symbolData: [
             {
-                lSymbol:SymbolName.RED_7, 
-                cSymbol:SymbolName.BUDOU,
-                rSymbol:SymbolName.REPLAY
+                lSymbol: SymbolName.RED_7,
+                cSymbol: SymbolName.BUDOU,
+                rSymbol: SymbolName.REPLAY
             },
             {
-                lSymbol:SymbolName.BUDOU, 
-                cSymbol:SymbolName.BUDOU,
-                rSymbol:SymbolName.REPLAY
+                lSymbol: SymbolName.RED_7,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.BUDOU
+            },
+            {
+                lSymbol: SymbolName.RED_7,
+                cSymbol: SymbolName.PIERO,
+                rSymbol: SymbolName.REPLAY
+            },
+
+            {
+                lSymbol: SymbolName.BUDOU,
+                cSymbol: SymbolName.BUDOU,
+                rSymbol: SymbolName.REPLAY
+            },
+            {
+                lSymbol: SymbolName.BUDOU,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.BUDOU
+            },
+            {
+                lSymbol: SymbolName.BUDOU,
+                cSymbol: SymbolName.PIERO,
+                rSymbol: SymbolName.REPLAY
+            },
+
+            {
+                lSymbol: SymbolName.BELL2,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.BELL
+            },
+            {
+                lSymbol: SymbolName.BELL,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.BELL
+            },
+
+            {
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.BUDOU,
+                rSymbol: SymbolName.BUDOU
+            },
+            {
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.BELL,
+                rSymbol: SymbolName.REPLAY
+            },
+            {
+                lSymbol: SymbolName.REPLAY,
+                cSymbol: SymbolName.REPLAY,
+                rSymbol: SymbolName.BUDOU
             },
         ]
-    }
+    },
+    {
+        name: RollName.RED_SEVEN,
+        symbolData: [
+            {
+                lSymbol: SymbolName.RED_7,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.RED_7
+            },
+            {
+                lSymbol: SymbolName.BELL2,
+                cSymbol: SymbolName.REPLAY,
+                rSymbol: SymbolName.REPLAY
+            },
+            {
+                lSymbol: SymbolName.BELL2,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.BAR
+            },
+            {
+                lSymbol: SymbolName.PIERO,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.REPLAY
+            },
+            {
+                lSymbol: SymbolName.PIERO,
+                cSymbol: SymbolName.BUDOU,
+                rSymbol: SymbolName.BAR
+            },
+        ]
+    },
+    {
+        name: RollName.RED_SEVEN_FAKE,
+        symbolData: [
+            {
+                lSymbol: SymbolName.BUDOU,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.RED_7
+            },
+            {
+                lSymbol: SymbolName.BUDOU,
+                cSymbol: SymbolName.REPLAY,
+                rSymbol: SymbolName.REPLAY
+            },
+            {
+                lSymbol: SymbolName.RED_7,
+                cSymbol: SymbolName.RED_7,
+                rSymbol: SymbolName.REPLAY
+            },
+        ]
+    },
 ];
 
 

@@ -6,7 +6,7 @@ import { log } from 'console';
 class SlotScene extends Phaser.Scene {
   private body: Body | null = null;
   private selectedBodyScaleID: number = 0;
-  private scaleDats: number[] = [1,1.2, 1.5];
+  private scaleDats: number[] = [1, 1.2, 1.5];
 
   constructor() {
     super('slot-scene');
@@ -30,7 +30,7 @@ class SlotScene extends Phaser.Scene {
     this.load.image('bell_front', '/assets/images/symbol/bell.png');
     this.load.image('bell_back', '/assets/images/symbol/bell_back.png');
     this.load.image('bell_blur', '/assets/images/symbol/bell_blur.png');
-    
+
     this.load.image('bell2_front', '/assets/images/symbol/bell2.png');
     this.load.image('bell2_back', '/assets/images/symbol/bell2_back.png');
     this.load.image('bell2_blur', '/assets/images/symbol/bell2_blur.png');
@@ -100,6 +100,16 @@ class SlotScene extends Phaser.Scene {
 
       keyboard.on('keydown-SPACE', () => {
         this.scaleChange();
+      });
+
+      keyboard.on('keydown-A', () => {
+        this.body?.debugMove(ReelPosition.LEFT);
+      });
+      keyboard.on('keydown-S', () => {
+        this.body?.debugMove(ReelPosition.CENTER);
+      });
+      keyboard.on('keydown-D', () => {
+        this.body?.debugMove(ReelPosition.RIGHT);
       });
     }
   }

@@ -75,10 +75,10 @@ class Body extends Phaser.GameObjects.Container {
     public spinStartAll(): void {
         const result = this.reelController.spin();
         if (result) {
-            this.rollName = Math.floor(Math.random() * 100) % 8 as RollName;
+            this.rollName = Math.floor(Math.random() * 100) % 10 as RollName;
             this.reelController.setRollName(this.rollName);
-            if(this.debugText){
-                this.debugText.text=this.rollName.toString();
+            if (this.debugText) {
+                this.debugText.text = this.rollName.toString();
             }
             this.scene.sound.play('se_roll');
         }
@@ -130,6 +130,11 @@ class Body extends Phaser.GameObjects.Container {
             this.stopRight();
             return;
         }
+    }
+
+    public debugMove(position: ReelPosition) {
+        const reels = [this.reelLeft, this.reelCenter, this.reelRight];
+        reels[position].reelY += 111;
     }
 }
 export default Body;
